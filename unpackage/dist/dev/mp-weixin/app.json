@@ -1,13 +1,12 @@
 {
-    "pages": [
-        "pages/index/index"
-    ],
-    "subPackages": [],
-    "window": {
-        "navigationBarTextStyle": "white",
-        "navigationBarTitleText": "网易严选",
-        "navigationBarBackgroundColor": "#bb2c08"
-    },
-    "usingComponents": {},
-    "sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/index/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "网易严选",
+    "navigationBarBackgroundColor": "#bb2c08"
+  },
+  "usingComponents": {}
 }

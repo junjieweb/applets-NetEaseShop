@@ -1,9 +1,9 @@
-/* 
-	stylus:
-		1.省略大括号
-		2.省略冒号和分号
-		3.支持样式嵌套
-	*/
+/*
+stylus:
+  1.省略大括号
+  2.省略冒号和分号
+  3.支持样式嵌套
+*/
 .indexContainer .header {
   display: flex;
   padding: 10rpx 0;
