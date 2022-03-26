@@ -14,26 +14,59 @@
   display: flex;
   height: calc(100vh - 80rpx);
   box-sizing: border-box;
-  border-top: 1rpx solid #333;
+  border-top: 1rpx solid #eee;
 }
 .categoryContainer .contentContainer .leftContainer {
   width: 20%;
   height: 100%;
-  border-right: 1rpx solid #333;
+  border-right: 1rpx solid #eee;
   box-sizing: border-box;
 }
 .categoryContainer .contentContainer .leftContainer .navScroll {
   height: calc(100vh - 82rpx);
 }
 .categoryContainer .contentContainer .leftContainer .navScroll .navItem {
+  position: relative;
   font-size: 26rpx;
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;
 }
+.categoryContainer .contentContainer .leftContainer .navScroll .navItem.active::before {
+  position: absolute;
+  top: 20rpx;
+  left: 10rpx;
+  content: '';
+  width: 2rpx;
+  height: 40rpx;
+  background: #bb2c08;
+}
 .categoryContainer .contentContainer .rightContainer {
   width: 80%;
   height: 100%;
-  background: #d3ffd6;
+}
+.categoryContainer .contentContainer .rightContainer .shopScroll {
+  height: calc(100vh - 82rpx);
+}
+.categoryContainer .contentContainer .rightContainer .shopScroll .cateImage {
+  width: 520rpx;
+  height: 190rpx;
+  display: block;
+  margin: 10rpx auto;
+}
+.categoryContainer .contentContainer .rightContainer .shopScroll .shopList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.categoryContainer .contentContainer .rightContainer .shopScroll .shopList .shopItem {
+  width: 33.333%;
+  text-align: center;
+}
+.categoryContainer .contentContainer .rightContainer .shopScroll .shopList .shopItem .shopImage {
+  height: 144rpx;
+  width: 90%;
+}
+.categoryContainer .contentContainer .rightContainer .shopScroll .shopList .shopItem .shopName {
+  font-size: 24rpx;
 }
 
