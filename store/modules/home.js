@@ -7,7 +7,7 @@ const state = {
 const mutations = {
     changeIndexDataMutation(state, indexData) {
         // 同步修改状态数据
-        state.indexData = indexData.kingKongModule.kingKongList || []
+        state.indexData = indexData
     }
 }
 

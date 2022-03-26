@@ -1,0 +1,43 @@
+.recommendContainer .banners.data-v-0614d904 {
+  width: 100%;
+  height: 350rpx;
+}
+.recommendContainer .banners .bannerIamge.data-v-0614d904 {
+  width: 100%;
+  height: 350rpx;
+}
+.recommendContainer .policyList.data-v-0614d904 {
+  display: flex;
+}
+.recommendContainer .policyList .policyItem.data-v-0614d904 {
+  flex: 1;
+  text-align: center;
+}
+.recommendContainer .policyList .policyItem .policyImg.data-v-0614d904 {
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+}
+.recommendContainer .policyList .policyItem .content.data-v-0614d904 {
+  font-size: 24rpx;
+  vertical-align: middle;
+}
+.recommendContainer .kingKongList.data-v-0614d904 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.recommendContainer .kingKongList .kingKongItem.data-v-0614d904 {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.recommendContainer .kingKongList .kingKongItem .kingImage.data-v-0614d904 {
+  width: 110rpx;
+  height: 110rpx;
+  margin: 20rpx 0;
+}
+.recommendContainer .kingKongList .kingKongItem .kingContent.data-v-0614d904 {
+  font-size: 26rpx;
+}
+

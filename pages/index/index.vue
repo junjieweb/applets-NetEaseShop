@@ -12,22 +12,25 @@
     <!-- 导航区域 -->
     <scroll-view scroll-x="true" class="navScroll" enable-flex>
       <view class="navItem" :class="{active: navIndex === -1}" @click="changeNav(-1)">推荐</view>
-      <view class="navItem" :class="{active: navIndex === index}" @click="changeNav(index)" v-for="(item,index) in indexData" :key="item.L1Id">
+      <view class="navItem" :class="{active: navIndex === index}" @click="changeNav(index)"
+            v-for="(item,index) in indexData.kingKongModule.kingKongList" :key="item.L1Id">
         {{ item.text }}
       </view>
     </scroll-view>
     <!-- 内容区 -->
     <scroll-view scroll-y="true" >
-      <view></view>
+      <Recommend></Recommend>
     </scroll-view>
   </view>
 </template>
 
 <script>
-import request from '../../utils/request.js'
+// import request from '../../utils/request.js'
 import {mapActions, mapState} from "vuex";
+import Recommend from "../../components/Recommend/Recommend";
 
 export default {
+  components:{Recommend},
   data() {
     return {
       // indexData: {},
