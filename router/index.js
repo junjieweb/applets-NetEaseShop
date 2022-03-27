@@ -38,8 +38,8 @@ router.get('/getOpenId', async (ctx) => {
   let code = ctx.query.code
 
   // 2.整合数据，对接微信服务器
-  let appId = 'wx52b47b0276140ca6'
-  let appSecret = 'd8aebfec2d5bae260f354b91974c268e'
+  let appId = '自己的AppID(小程序ID)'
+  let appSecret = '自己的AppSecret(小程序密钥)'
 
   // 3.接收到微信服务器返回的数据，对当前用户数据进行自定义绑定，加密
   let url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${appSecret}&js_code=${code}&grant_type=authorization_code`
@@ -51,10 +51,10 @@ router.get('/getOpenId', async (ctx) => {
   let userInfo = {
     openId
   }
-  // 4.1对用户数据加密生产token
+  // 4.1对用户数据加密生成token
   let token = jwt.sign(userInfo, 'token');
   console.log(token)
-  // 4.2反编译token字段
+  // 4.2反编译token字段（解密）
   // let verifyResult = jwt.verify(token); // secret or public key must be provided
   // let verifyResult = jwt.verify(token, 'xxx'); // invalid signature
   let verifyResult = jwt.verify(token, 'token');
