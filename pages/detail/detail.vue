@@ -11,10 +11,10 @@
 		
 		<!-- 内容区 -->
 		<scroll-view class="content" scroll-y="true">
-			<!-- <image class="detailImg" :src="shopDetail.listPicUrl" mode=""></image>
+			<image class="detailImg" :src="shopDetail.listPicUrl" mode=""></image>
 			<view class="tag">{{shopDetail.promTag}}</view>
 			<text class="price">￥ {{shopDetail.retailPrice}}</text>
-			<view class="info">{{shopDetail.name}}</view> -->
+			<view class="info">{{shopDetail.name}}</view>
 			
 			
 			<!-- 准备内容 -->
@@ -30,19 +30,31 @@
 		<view class="detailFooter">
 			<image class="service" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/detail-kefu-d10f0489d2.png?imageView&type=webp" mode=""></image>
 			<view class="btn buyNow">立即购买</view>
-			<view  class="btn addShopCart">加入购物车</view>
+			<view  class="btn addShopCart" @click="addShopCart">加入购物车</view>
 		</view>
 	</view>
 </template>
 
 <script>
+  import {mapMutations} from 'vuex'
 	export default {
 		data() {
 			return {
 				shopDetail: {}
 			}
-		}
-		
+		},
+		onLoad(options) {
+		  this.shopDetail = JSON.parse(options.shopItem)
+		},
+    methods:{
+      ...mapMutations({
+        addShopItemMutation: 'addShopItemMutation'
+      }),
+      // 点击添加至购物车的回调
+      addShopCart(){
+        this.addShopItemMutation(this.shopDetail)
+      }
+    }
 	}
 </script>
 
