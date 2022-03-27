@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<div class="header">
-			<image @click='toLogin' class="userImg" src="../../static/images/personal/personal.png" mode=""></image>
-			<div class='userInfo' @click='toLogin'>
-				<p>未登录</p>
+			<image @tap="getUserProfile" class="userImg" :src="userInfo.avatarUrl ? userInfo.avatarUrl : '../../static/images/personal/personal.png'" mode=""></image>
+			<div class='userInfo' @tap="getUserProfile">
+				<p>{{userInfo.nickName ? userInfo.nickName : '未登录'}}</p>
 			</div>
 		</div>
 		
@@ -47,9 +47,7 @@
 	module.exports = {
 		data(){
 			return {
-				userInfo: {
-					
-				},
+				userInfo: {},
 				personalList: [
 					{
 						name: '我的订单',
@@ -94,16 +92,42 @@
 				]
 			}
 		},
-		mounted(){
-			
+/* 		mounted(){
+      wx.getUserInfo({
+        success:(res) => {
+          this.userInfo = res.userInfo
+        },
+        fail:(err) => {
+          console.log(err)
+        }
+      })
 		},
 		methods: {
 			toLogin(){
+        if(this.userInfo.nickName) return 
 				wx.navigateTo({
           url: '/pages/login/login'
         })
 			}
-		},
+		}, */
+    
+    methods: {
+    	getUserProfile(e) {
+    	  // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    	  // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    	  wx.getUserProfile({
+    	    desc: '登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+    	    success: (res) => {
+            // console.log(res)
+            wx.setStorage({
+              key: 'userInfo',
+              data: res.userInfo
+            })
+            this.userInfo = res.userInfo
+    	    }
+    	  })
+    	},
+    },
 	}
 </script>
 

@@ -179,8 +179,6 @@ module.exports = {
   data: function data() {
     return {
       userInfo: {},
-
-
       personalList: [
       {
         name: '我的订单',
@@ -225,13 +223,39 @@ module.exports = {
 
 
   },
-  mounted: function mounted() {
+  /* 		mounted(){
+           wx.getUserInfo({
+             success:(res) => {
+               this.userInfo = res.userInfo
+             },
+             fail:(err) => {
+               console.log(err)
+             }
+           })
+     		},
+     		methods: {
+     			toLogin(){
+             if(this.userInfo.nickName) return 
+     				wx.navigateTo({
+               url: '/pages/login/login'
+             })
+     			}
+     		}, */
 
-  },
   methods: {
-    toLogin: function toLogin() {
-      wx.navigateTo({
-        url: '/pages/login/login' });
+    getUserProfile: function getUserProfile(e) {var _this = this;
+      // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+      // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+      wx.getUserProfile({
+        desc: '登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: function success(res) {
+          // console.log(res)
+          wx.setStorage({
+            key: 'userInfo',
+            data: res.userInfo });
+
+          _this.userInfo = res.userInfo;
+        } });
 
     } } };
 
