@@ -129,6 +129,17 @@
     	  })
     	},
     },
+    mounted(){
+      // 获取用户唯一标识openId
+      // 1.获取用户登录凭证code
+      wx.login({
+        success: (res) => {
+          let code = res.code
+          // 2.将code发请求发送给服务器端
+          
+        }
+      })
+    }
 	}
 </script>
 

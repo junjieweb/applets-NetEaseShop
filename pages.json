@@ -6,16 +6,16 @@
   },
   "pages": [
     {
-      "path": "pages/cart/cart",
+      "path": "pages/personal/personal",
       "style": {
-        "navigationBarTitleText": "购物车",
+        "navigationBarTitleText": "个人中心",
         "enablePullDownRefresh": false
       }
     },
     {
-      "path": "pages/personal/personal",
+      "path": "pages/cart/cart",
       "style": {
-        "navigationBarTitleText": "个人中心",
+        "navigationBarTitleText": "购物车",
         "enablePullDownRefresh": false
       }
     },
@@ -33,24 +33,21 @@
         "enablePullDownRefresh": false
       }
     },
-
     {
       "path": "pages/login/login",
       "style": {
         "navigationBarTitleText": "登录",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/detail/detail",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
     }
-      ,{
-            "path" : "pages/detail/detail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+  ],
   "tabBar": {
     "color": "#555",
     "selectedColor": "#D43C33",
