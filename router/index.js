@@ -29,5 +29,18 @@ router.get("/getIndexCateList", (ctx) => {
   ctx.body = indexCateList;
 });
 
+// 注册获取用户openId的接口
+router.get('/getOpenId', (ctx) => {
+  // 1.接收请求参数
+  let code = ctx.query.code
+  console.log('code:', code)
+  // 2.整合数据，对接微信服务器
+
+  // 3.接收到微信服务器返回的数据，对当前用户数据进行自定义绑定，加密
+
+  // 4.返回给浏览器端当前用户加密后的标识
+
+})
+
 // 向外暴露路由器对象
 module.exports = router;
