@@ -2,6 +2,7 @@
   "navigationBarTitleText": "首页",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "recommend": "/components/Recommend/Recommend"
+    "recommend": "/components/Recommend/Recommend",
+    "cate-list": "/components/CateList/CateList"
   }
 }
