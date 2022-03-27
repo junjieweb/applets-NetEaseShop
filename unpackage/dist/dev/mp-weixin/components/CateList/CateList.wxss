@@ -1,0 +1,45 @@
+.cateListContainer .banners {
+  width: 100%;
+  height: 370rpx;
+}
+.cateListContainer .banners .bannerIamge {
+  width: 100%;
+  height: 370rpx;
+}
+.cateListContainer .title {
+  font-size: 36rpx;
+  color: #333;
+  line-height: 70rpx;
+  text-align: center;
+}
+.cateListContainer .desc {
+  font-size: 26rpx;
+  color: #999;
+  line-height: 40rpx;
+  text-align: center;
+}
+.cateListContainer .shopList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.cateListContainer .shopList::after {
+  content: '';
+  width: 344rpx;
+}
+.cateListContainer .shopList .shopItem {
+  width: 344rpx;
+}
+.cateListContainer .shopList .shopItem .shopImage {
+  width: 344rpx;
+  height: 344rpx;
+}
+.cateListContainer .shopList .shopItem .common {
+  font-size: 26rpx;
+  line-height: 50rpx;
+}
+.cateListContainer .shopList .shopItem .common.shopPrice {
+  color: #bb2c08;
+  font-weight: bold;
+}
+

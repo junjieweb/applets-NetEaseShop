@@ -21,7 +21,7 @@
     <scroll-view scroll-y="true" >
       <!-- 推荐对应组件 -->
       <Recommend v-if="!!!navId"></Recommend>
-      <CateList v-else></CateList>
+      <CateList v-else :navId="navId"></CateList>
     </scroll-view>
   </view>
 </template>
