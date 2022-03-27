@@ -23,5 +23,11 @@ router.get("/getCategoryData", (ctx) => {
   ctx.body = categoryData;
 });
 
+// 注册首页分类数据的接口
+const indexCateList = require("../datas/indexCateList.json");
+router.get("/getIndexCateList", (ctx) => {
+  ctx.body = indexCateList;
+});
+
 // 向外暴露路由器对象
 module.exports = router;
