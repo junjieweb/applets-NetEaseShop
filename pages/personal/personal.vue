@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="header">
-			<image class="userImg" src="../../static/images/personal/personal.png" mode=""></image>
+			<image @click='toLogin' class="userImg" src="../../static/images/personal/personal.png" mode=""></image>
 			<div class='userInfo' @click='toLogin'>
 				<p>未登录</p>
 			</div>
@@ -99,7 +99,9 @@
 		},
 		methods: {
 			toLogin(){
-				
+				wx.navigateTo({
+          url: '/pages/login/login'
+        })
 			}
 		},
 	}

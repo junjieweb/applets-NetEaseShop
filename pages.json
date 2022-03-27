@@ -6,6 +6,13 @@
   },
   "pages": [
     {
+      "path": "pages/personal/personal",
+      "style": {
+        "navigationBarTitleText": "个人中心",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "首页",
@@ -27,18 +34,10 @@
       }
     },
     {
-      "path": "pages/personal/personal",
+      "path": "pages/login/login",
       "style": {
-        "navigationBarTitleText": "个人中心",
+        "navigationBarTitleText": "登录",
         "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path" : "pages/login/login",
-      "style" :                                                                                    
-      {
-          "navigationBarTitleText": "",
-          "enablePullDownRefresh": false
       }
     }
   ],
