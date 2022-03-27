@@ -14,8 +14,8 @@
 		 -->
 				<!-- 购物车列表 -->
 		<view class="cartList">
-			<view class="cartItem" v-for="item in cartList" :key="item.id">
-				<text class='iconfont icon-xuanzhong' :class="{selected: item.selected}"></text>
+			<view class="cartItem" v-for="(item, index) in cartList" :key="item.id">
+				<text class='iconfont icon-xuanzhong' :class="{selected: item.selected}" @click="changeSeleted(!item.selected, index)"></text>
 				<view class="shopItem">
 					<image class="shopImg" :src="item.listPicUrl" mode=""></image>
 					<view class="shopInfo">
@@ -25,18 +25,18 @@
 				</view>
 				<!-- 控制数量 -->
 				<view class="countCtrl">
-					<text class="add" > + </text>
+					<text class="add" @click="changeCount(true, index)"> + </text>
 					<text class="count"> {{item.count}} </text>
-					<text class="del"> - </text>
+					<text class="del" @click="changeCount(false, index)"> - </text>
 				</view>
 			</view>
 		</view>
 		<!-- 底部下单 -->
 		<view class="cartFooter">
-			<text class='iconfont icon-xuanzhong selected'></text>
-			<text class="allSelected">已选 1</text>
+			<text class='iconfont icon-xuanzhong' :class="{selected: isAllSelected}" @click="changeAllSelected(!isAllSelected)"></text>
+			<text class="allSelected">已选 {{totalCount}}</text>
 			<view class="right">
-				<text class="totalPrice">合计: ￥111</text>
+				<text class="totalPrice">合计: ￥{{totalPrice}}</text>
 				<text class="preOrder">下单</text>
 			</view>
 		</view>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import {mapState, mapMutations, mapGetters} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -58,7 +58,27 @@
     computed:{
       ...mapState({
         cartList: state => state.cart.cartList
-      })
+      }),
+      ...mapGetters(['isAllSelected', 'totalCount', 'totalPrice'])
+    },
+    methods:{
+      ...mapMutations({
+        changeCountMutation: 'changeCountMutation',
+        changeSeletedMutation: 'changeSeletedMutation',
+        changeAllSelectedMutation: 'changeAllSelectedMutation'
+      }),
+      // 修改数量
+      changeCount(isAdd, index){
+        this.changeCountMutation({isAdd, index})
+      },
+      // 修改是否选中的状态
+      changeSeleted(selected, index){
+        this.changeSeletedMutation({selected, index})
+      },
+      // 修改全选/全不选
+      changeAllSelected(isAllSelected){
+        this.changeAllSelectedMutation(isAllSelected)
+      }
     }
 	}
 </script>

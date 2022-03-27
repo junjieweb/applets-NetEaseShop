@@ -164,31 +164,78 @@ const state = {
 };
 const mutations = {
   // 添加到购物车
-  addShopItemMutation(state, shopItem){
+  addShopItemMutation(state, shopItem) {
     /* 
       思路：
         1.购物车已有该商品，在原有的商品count上累加
         2.购物车没有该商品，直接添加该商品发到购物车
     */
     let shopObj = state.cartList.find(item => item.id === shopItem.id)
-    if(shopObj){ // 购物车已有该商品
+    if (shopObj) { // 购物车已有该商品
       shopObj.count++
-    }else { // 购物车没有该商品
+    } else { // 购物车没有该商品
       // 非响应式数据
       // shopItem.count = 1
       // shopItem.selected = true
-      
+
       // 响应式数据
       Vue.set(shopItem, 'count', 1)
       Vue.set(shopItem, 'selected', true)
       state.cartList.push(shopItem)
     }
+  },
+  // 修改数量
+  changeCountMutation(state, { isAdd, index }) {
+    if (isAdd) {
+      state.cartList[index].count++
+    } else {
+      // 判断商品数量是否大于1
+      if (state.cartList[index].count > 1) {
+        state.cartList[index].count--
+      } else {
+        wx.showModal({
+          content: '确定删除吗?',
+          success: (res) => {
+            if (res.confirm) {
+              // 删除商品
+              state.cartList.splice(index, 1)
+            }
+          }
+        })
+      }
+    }
+  },
+  // 修改是否选中
+  changeSeletedMutation(state, { selected, index }) {
+    state.cartList[index].selected = selected
+  },
+  // 修改全选全不选
+  changeAllSelectedMutation(state, isSelected){
+    state.cartList.forEach(item => item.selected = isSelected)
   }
 };
 
 const actions = {};
 
-const getters = {};
+const getters = {
+  isAllSelected(state){
+    // every: 所有的元素都满足条件
+    // some: 只要有一个满足条件就为true
+    return state.cartList.every(item => item.selected)
+  },
+  // 已选总数量
+  totalCount(state){
+    return state.cartList.reduce((pre, shopItem)=>{
+      return pre += shopItem.selected ? shopItem.count : 0
+    }, 0)
+  },
+  // 已选总价格
+  totalPrice(state){
+    return state.cartList.reduce((pre, shopItem)=>{
+      return pre += shopItem.selected ? shopItem.count * shopItem.retailPrice : 0
+    }, 0)
+  },
+};
 
 // 向外暴露
 export default {
